@@ -1,0 +1,29 @@
+Notatki odnośnie veriloga:
+Do kompilacji i runowania pliku veriloga uzyłem Icarus Verilog. Szczególnie do Veriloga musiałem uzywać Chatu GPT
+Kompiolwałem używając komendy iverilog.exe VerilogModulo.v z poziomu folderu z plikiem
+Runowałem przy pomocy vvp.exe \a.out
+
+Źródła których użyłem:
+https://www.hdlworks.com/hdl_corner/verilog_ref/ - informacje odnośnie pętli, wywoływania modułów, initial
+
+Prompty do ChatGPT: (niektóre mogą byc niepoprawne gramatycznie)
+Does there exist xor operator in verilog?
+
+If I have an array in verilog reg [n-1 :0] "array" and then i assign array = 54, does it contain the bits of the number?
+
+Why does this error happen  error: Unable to bind parameter `k' in `hello_world.numberprim.$gen1[0]'
+
+What might be causing such error?
+
+If i change the type of variable to a wire for examplem would you say it would work?
+
+Wire vs Reg in Verilog? What do these two mean?
+
+Can GenVar be causing an issue when initialized in the wrong place (for examble in the initial)?
+
+a == 1'b1 what does this statement mmean in verilog?
+
+Próbowałem także uzywać ChatGPT jako pseudo-Debuggera - jednak bez pozytywnych skutków.
+Te promty zostały napisane w 2 różnych rozmowach - niektóre mogą być inne, poprzez dostęp w tamtych pokojach do snippetu kodu.
+Pominąłem promty wysyłające ChaowiGPT snippety, oraz wyrażane niezadowolenie kiedy po raz n-ty zaproponował nie zmianę, a 
+nadskomplikowaną refaktoryzację
