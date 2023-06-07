@@ -202,29 +202,29 @@ module numbersPrim #(parameter N = 8) (
 endmodule
 
 module hello_world;
-    parameter N_BIT = 7;
+    parameter N = 7;
 
-	reg [N_BIT - 1:0] a;
-	reg [N_BIT - 1:0] b;
-	reg [N_BIT - 1:0] k;
+	reg [N - 1:0] a;
+	reg [N - 1:0] b;
+	reg [N - 1:0] k;
 
-    wire [N_BIT - 1:0] a_prim;
-    wire [N_BIT : 0] b_prim;
+    wire [N - 1:0] a_prim;
+    wire [N : 0] b_prim;
 
-    wire [N_BIT - 1:0] H;
-    wire [N_BIT - 1:0] G;
-    wire [N_BIT - 1:0] P;
+    wire [N - 1:0] H;
+    wire [N - 1:0] G;
+    wire [N - 1:0] P;
 
-    wire [N_BIT - 1:0] H_prim;
-    wire [N_BIT - 1:0] G_prim;
-    wire [N_BIT - 1:0] P_prim;
+    wire [N - 1:0] H_prim;
+    wire [N - 1:0] G_prim;
+    wire [N - 1:0] P_prim;
 
-    wire [N_BIT :0] C;
-    wire [N_BIT :0] C_prim;
+    wire [N :0] C;
+    wire [N :0] C_prim;
 
-    wire [N_BIT - 1 :0] SUM;
+    wire [N - 1 :0] SUM;
 
-    numbersPrim #(N_BIT) numbers_Prim(
+    numbersPrim #(N) numbers_Prim(
         .number1(a),
         .number2(b),
         .k(k),
@@ -232,7 +232,7 @@ module hello_world;
         .number2_prim(b_prim)
     );
     
-    PreProcessing #(N_BIT) preprocess(
+    PreProcessing #(N) preprocess(
         .num1(a),
         .num2(b),
         .num1_prim(a_prim),
@@ -246,7 +246,7 @@ module hello_world;
         .P_prim(P_prim)
     );
 
-    ParallelPrefix #(N_BIT) parapre(
+    ParallelPrefix #(N) parapre(
         .G(G),
         .P(P),
         .G_prim(G_prim),
@@ -255,7 +255,7 @@ module hello_world;
         .C_prim(C_prim)
     );
 
-    SumComputation #(N_BIT) sumcomp(
+    SumComputation #(N) sumcomp(
         .H(H),
         .C(C),
         .H_prim(H_prim),
