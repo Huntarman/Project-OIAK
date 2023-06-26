@@ -1,4 +1,4 @@
-import Python.LadnerFischer as og
+import LadnerFischer as og
 from array import *
 from math import ceil, log2
 
@@ -96,4 +96,4 @@ def SumCopmutationStage(H, C,H_prim, C_prim, C_out):
 
     return S
    
-run(127, 127, 127)
+run(127, 127, 120)

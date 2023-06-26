@@ -1,4 +1,4 @@
-import Python.LadnerFischer as og
+import LadnerFischer as og
 from array import *
 from math import ceil, log2
 
@@ -29,27 +29,38 @@ def run(number_1, number_2, k):
     C = og.parallelPrefixStage(H,P,G, max_length)
     C_prim = og.parallelPrefixStage(H_prim, P_prim, G_prim, max_length)
     C_out = og.OR(C[og_Length-1],C_prim[og_Length-1])
+    
 
     if True:
-        #print("NUM1Prim")
-        #print(num_1_prim_Bits)
-        #print("NUM2Prim")
-        #print(num_2_prim_Bits)
-        print(C)
-        print(C_prim)
-    
+        print("NUM1:", bitToDec(num_1_Bits), " NUM2: ", bitToDec(num_2_Bits))
+        print("NUM1Prim: ",bitToDec(num_1_prim_Bits),"NUM2prim: ",bitToDec(num_2_prim_Bits))
+        print("H: ",bitToDec(H)," G: ",bitToDec(G)," P: ",bitToDec(P))
+        print("HPrim: ", bitToDec(H_prim)," G_prim: ",bitToDec(G_prim) ," P_prim: ",bitToDec(P_prim))
+        print("C: ", bitToDec(C), " c_prim:", bitToDec(C_prim), "cout: ",C_out)
+
     #sumcompstage
     S = SumCopmutationStage(H, C, H_prim, C_prim, C_out)
 
     if True:
         print("Liczba 1:")
-        og.printNum(num_1_Bits)
+        print(bitToDec(num_1_Bits))
         print("Liczba 2:")
-        og.printNum(num_2_Bits)
+        print(bitToDec(num_2_Bits))
+        print("Modulo:")
+        print(2**(len(num_1_Bits)) - k)
         print("Wynik")
-        og.printNum(S)
+        print(bitToDec(S))
     
 
+def bitToDec (number):
+    str = ""
+    for bit in reversed(number):
+        if bit:
+            str += "1"
+        else:
+            str +="0"
+    dec = int(str,2)
+    return dec
 
 def numsPrim(number_1_Bit, number_2_Bit, modulo_bits):
     num1Prim = []
@@ -79,4 +90,4 @@ def SumCopmutationStage(H, C,H_prim, C_prim, C_out):
 
     return S
    
-run(97, 88, 6)
+run(112, 112, 15)

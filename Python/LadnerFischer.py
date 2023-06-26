@@ -38,19 +38,19 @@ def preProcessingStage(number_1_Bit, number_2_Bit):
 
     return H, P, G
 
-def parallelPrefixStage(H, P, G, levels):
+def parallelPrefixStage(H, P, G, n):
     logic = []
-    for i in range (0, levels):
+    for i in range (0, n):
         tupel = bitify(i)
-        tupel = [False] * (levels - len(tupel)) + tupel
+        tupel = [False] * (n - len(tupel)) + tupel
         tupel.reverse()
         logic.append(tupel)
     C = []
-    Pairs = [[[G[0],P[0]] ]* ceil(log2(levels))]
-    for i in range (1, levels):
+    Pairs = [[[G[0],P[0]] ]* ceil(log2(n))]
+    for i in range (1, n):
         pi = False
         gi = False
-        for j in range (0, ceil(log2(levels))):
+        for j in range (0, ceil(log2(n))):
             if logic[i][j]:
                 if j == 0:
                     pi = P_i(P[i], P[i-1])
@@ -74,7 +74,7 @@ def parallelPrefixStage(H, P, G, levels):
                     Pairs[i].append([gi,pi])
     
     for list in Pairs:
-        C.append(list[ceil(log2(levels))-1][0])
+        C.append(list[ceil(log2(n))-1][0])
     
     return C
 

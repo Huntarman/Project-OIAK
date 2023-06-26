@@ -1,3 +1,4 @@
+
 module SumCoputationZero(
     input H,
     input H_prim,
@@ -250,6 +251,8 @@ module hello_world;
     wire [N -1:0] C_prim;
 
     wire [N - 1 :0] SUM;
+    reg niepoprawne;
+    reg [N - 1 :0] spodziewany_wynik;
 
     numbersPrim #(N) numbers_Prim(
         .number1(a),
@@ -291,14 +294,22 @@ module hello_world;
     );
 
     initial begin
-        a = 112;
-        b = 100;
-	    k = 15;
-        
-        $display("Liczba 1: %d, Liczba 2: %d", a, b);
-        #150;
-        $display("Suma modulo: %d", SUM);
-        #150;
-    end
+		niepoprawne = 0;
+            for(k = 3; k < 2**(N-1); k = k + 1) begin
+                for(a = 0; a < 2**N-k; a=a+1) begin
+                    for(b = 0; b < 2**N-k; b=b+1) begin
+                        if(niepoprawne == 0) begin
+                            spodziewany_wynik= (a + b) % (2**N-k);
+                            #10;
+                            $display("Expected: %d, Actual: %d, A: %d, B: %d, K: %d", spodziewany_wynik, SUM, a, b, k);
+                            if(spodziewany_wynik != SUM) begin
+                                niepoprawne = 1;
+                            end
+                        end
+                    end
+                end
+            end
+            #150;
+        end
     
 endmodule
