@@ -7,7 +7,7 @@ w wybranym języku, oraz odwzorowaniu tego układu w języku Verilog
 
 ## Technologie
 
-- **Logisim**;
-- **Python**;
-- **Veriliog**;
-- **Latex**;
+- **Logisim**:
+- **Python**:
+- **Veriliog**:
+- **Latex**:
